@@ -133,7 +133,7 @@ class MyDigitButton extends Button implements ActionListener {
                     }
                 }
 
-                if (dotInTheLine) {
+                if (!dotInTheLine) {
                     cl.displayLabel.setText(cl.displayLabel.getText() + ".");
                 }
             }
