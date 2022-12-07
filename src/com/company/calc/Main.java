@@ -6,7 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-
+/**
+ * Этот код будет сложнее упростить, но постарайся избавиться от дубликатов кода и сделать код более последовательным
+ * и понятным для тебя, чтобы из этого всего ты смог понять большую часть.
+ */
 public class Main extends Frame {
 
     public boolean setClear = true;

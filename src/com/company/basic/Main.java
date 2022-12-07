@@ -2,6 +2,55 @@ package com.company.basic;
 
 import java.util.*;
 
+
+/**
+ * В этих упражнениях ты научишься работать с извлечением и инверсией.
+ *
+ * Извлечение это когда у тебя есть часть кода которая может быть вынесена в отдельную функцию.
+ * Инверсии это когда ты переносишь исключения или ошибки наверх функции чтобы провалидировать код самого начала.
+ *
+ * Все это нужно для того чтобы упростить чтение и понимание кода. Как пример код может выглядеть так:
+ *
+ * {
+ *     условие {
+ *         условие {
+ *             условие {
+ *                 {
+ *                     КУЧА КОДА 1
+ *                 }
+ *             } исключение {
+ *                 КУЧА КОДА 2
+ *             }
+ *         } исключение {
+ *             КУЧА КОДА 3
+ *         }
+ *     } исключение { чутка кода 1 }
+ * }
+ *
+ * Что можно превратить в более читабельный вид:
+ *
+ * функция1 {
+ *     КУЧА КОДА 1
+ * }
+ *
+ * функция2 {
+ *     КУЧА КОДА 2
+ * }
+ *
+ * функция3 {
+ *     КУЧА КОДА 3
+ * }
+ *
+ *
+ * {
+ *     исключение { чутка кода 1 }
+ *     исключение { функция3 }
+ *     исключение { функция2 }
+ *     функция1
+ * }
+ *
+ * Ниже будет приведен пример, а именно просмотри изменения в коде между calculateEvenNumbers и calculateEvenNumbersV2
+ */
 public class Main {
     private static HashMap<Integer, String> users = new HashMap<>(Map.of(
             0, "Naruto",
@@ -22,13 +71,13 @@ public class Main {
             int sum = 0;
 
             for (int i = bottom; i < top; i++) {
-                if (i % 2 == 0) {
+                if (i % 2 == 0) { // это можно извлечь в отдельную функцию
                     sum += i;
                 }
             }
 
             return sum;
-        } else {
+        } else { // это можно инвертировать
             return 0;
         }
     }
@@ -42,19 +91,25 @@ public class Main {
     }
 
     static int calculateEvenNumbersV2(int bottom, int top) {
-        if (top <= bottom) {
+        if (top <= bottom) { // инвертированное условие
             return 0;
         }
 
         int sum = 0;
 
         for (int i = bottom; i < top; i++) {
-            sum += filterNumber(i);
+            sum += filterNumber(i); // вынесенная часть кода
         }
 
         return sum;
     }
 
+
+    /**
+     * Функция принимает строку формата "int:String":
+     * 0:Naruto
+     * 2132:dick
+     */
     static void registerUser(String user) {
         String[] parts = user.split(":");
 
@@ -77,6 +132,7 @@ public class Main {
         }
     }
 
+    // TODO: инвертируй и вынеси что сможешь в функции registerUser
     static void registerUserV2(String user) {
 
     }
